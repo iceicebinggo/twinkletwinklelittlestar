@@ -39,16 +39,19 @@ function adsr (param, peak, val, time, a, d, s, r) {
   param.linearRampToValueAtTime(initVal, time+a+d+s+r)
 }
 
-function tone (time, duration, volume) {
+function tone (type, pitch, time, duration) {
+  const ty = type || 'sine'
+const t = time || ctx.currentTime
+const dur = duration || 0.25
+const vol = volume || 0.5
 
-  
-  const  osc = new OscillatorNode(ctx)
-  const lvl = new GainNode(ctx, {gain: 0.5})
+  const  osc = new OscillatorNode(ctx, { type: ty})
+  const lvl = new GainNode(ctx, {gain: vol})
   tone.connect(lvl) //connection from oscillator to gain
   lvl.connect(ctx.destination) //output
   lvl.connect(fft)
-  tone.start(ctx.currentTime)
-  tone.stop(ctx.currentTime + 4)
+  tone.start(t)
+  tone.stop(t + 4)
 }
 
 const major = [0, 2, 4, 5, 7, 9, 11, 12]
