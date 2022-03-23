@@ -103,25 +103,33 @@ const beat = 60 / tempo // seconds per beat (ie. quarter note)
 const bar = beat * 5
 const root = 440 // A4
 const scale = major
-const notes = [ 0, 4, 7, 9, 12]
+const notes = [0, 0, 7, 7, 9, 9, 7]
 
 function r (scale){
   return Math.floor(Math.random() * scale.length)
 }
 
-for (let b = 0; b < 5; b++) {
-  const delayB = b * bar
-  notes[2] = r(scale)
-for (let a = 0; a < 5; a++) {
-  const delayA = a * bar
-    for (let i = 0; i < notes.length; i++) {
-      const time = i * beat + delayStart + delayA + delayB
-      const dur = beat
-      const pitch = step(root, notes[i])
-      tone ('sine', pitch, time, dur)
-    }
-  }
+for (let i = 0; i < notes.length; i++) {
+  const time = i * beat + delayStart
+  const dur = beat
+  const pitch = step(root, notes[i])
+  tone ('sine', pitch, time, dur)
 }
+
+
+// for (let b = 0; b < 5; b++) {
+//   const delayB = b * bar
+//   notes[2] = r(scale)
+// for (let a = 0; a < 5; a++) {
+//   const delayA = a * bar
+//     for (let i = 0; i < notes.length; i++) {
+//       const time = i * beat + delayStart + delayA + delayB
+//       const dur = beat
+//       const pitch = step(root, notes[i])
+//       tone ('sine', pitch, time, dur)
+//     }
+//   }
+// }
 
 
 
