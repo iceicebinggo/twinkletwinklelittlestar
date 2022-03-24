@@ -100,10 +100,17 @@ function step (rootFreq, steps) {
 const delayStart = 1
 const tempo = 140  // bpm
 const beat = 60 / tempo // seconds per beat (ie. quarter note)
-const bar = beat * 5
+const bar = beat * 4
 const root = 440 // A4
 const scale = major
-const notes = [0, 0, 7, 7, 9, 9, 7]
+const notes = [
+    0, 0, 7, 7, 9, 9, 7,
+    5, 5, 4, 4, 2, 2, 0,
+    7, 7, 5, 5, 4, 4, 2,
+    7, 7, 5, 5, 4, 4, 2,
+    0, 0, 7, 7, 9, 9, 7,
+    5, 5, 4, 4, 2, 2, 0
+  ]
 
 function r (scale){
   return Math.floor(Math.random() * scale.length)
